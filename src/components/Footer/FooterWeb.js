@@ -16,7 +16,7 @@ class FooterWeb extends React.Component {
                                     <li className="page-item" aria-current="page">
                                         <a className="page-link" href="/">2 <span className="sr-only">(current)</span></a>
                                     </li>
-                                    <li className="page-item page-link"><a className="page-link" href="/">3</a></li>
+                                    <li className="page-item"><a className="page-link" href="/">3</a></li>
                                     <li className="page-item active">
                                         <a className="page-link" href="/">Siguiente</a>
                                     </li>

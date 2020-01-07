@@ -15,8 +15,8 @@ class App extends React.Component {
                     <HeaderToolbar></HeaderToolbar>
 
                     <Switch>
-                        <Route  path="/search/:id" render={(props) => 
-                            <PageResults id={props.match.params.id} />
+                        <Route  path="/search/:search" render={(props) => 
+                            <PageResults search={props.match.params.search} />
                         } />
 
 

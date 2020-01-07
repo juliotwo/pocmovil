@@ -40,7 +40,7 @@ class HeaderToolbar extends React.Component {
                                 <div className="header-right col-lg-6">
                                     <div className="ml-auto">
                                         <ul className="nav align-items-center">
-                                            <li className="d-none d-lg-inline-block nav-item pr-4" onClick={this.Search}>
+                                            <li className="d-none d-lg-inline-block nav-item pr-4" >
                                                 <span
                                                     data-toggle="tooltip"
                                                     data-title="Buscar productos"
@@ -49,6 +49,7 @@ class HeaderToolbar extends React.Component {
                                                     title="">
                                                     <a
                                                         href="#"
+                                                        onClick={this.Search}
                                                         data-action="omnisearch-open"
                                                         data-target="#omnisearch"
                                                         className="action-item nav-link btn btn-nav border-0 icon-nav">
@@ -105,7 +106,7 @@ class HeaderToolbar extends React.Component {
                                                         <i className="icon-carrito"></i>
                                                         <span className="mini-cart-items">
                                                             2
-                                                </span>
+                                                        </span>
                                                     </a>
                                                 </span>
                                             </li>
@@ -118,7 +119,7 @@ class HeaderToolbar extends React.Component {
                                                     title=""
                                                 >
                                                     <a
-                                                        href="#!"
+                                                        href="/#!"
                                                         data-toggle="modal"
                                                         data-target="#agregar-cliente"
                                                         className="action-item nav-link btn btn-nav border-0 icon-nav"

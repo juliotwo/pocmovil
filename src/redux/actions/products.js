@@ -13,10 +13,11 @@ export function notLoadProducts() {
     };
 }
 
-export function loadProductsSuccess(payload) {
+export function loadProductsSuccess(payload,prouctName) {
     return {
         type: fromProducts.LOAD_PRODUCTS_SUCCESS,
-        payload
+        payload,
+        prouctName
     };
 }
 
@@ -33,14 +34,15 @@ export function laodProductsError(payload) {
 // rgpagina ->num de elementos por pagina deseado 9
 // tipo de busqueda -> 1 2 3 o 4
 
-export function fetchProducts(pagina="0", query,liquidacion="false",tipoBusqueda="4"){
+export function fetchProducts(query,pagina="0",liquidacion="false",tipoBusqueda="4"){
+    console.log(pagina,query,liquidacion,tipoBusqueda)
     return dispatch => {
         return new Promise((resolve, reject) => {
-            dispatch(loadProducts());
             ProductsService.GetProducts(pagina, query,liquidacion,tipoBusqueda)
-            .then(leagues =>{
-                dispatch(loadProductsSuccess(leagues));
-                resolve(leagues);
+            .then(products =>{
+                console.log("QUERY",query)
+                dispatch(loadProductsSuccess(products,query));
+                resolve(products);
             })
             .catch(error => {
                 dispatch(laodProductsError(error));

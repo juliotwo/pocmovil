@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { connect } from 'react-redux';
 
 import { useParams} from "react-router";
+import { fetchProducts } from '../redux/actions/products';
 
 
 
@@ -33,12 +34,12 @@ function ProductList(props) {
     );
 }
 class ContainerPageResults extends React.Component {
-    componentDidMount(){
+    constructor(props){
+        super(props)
         console.log(this.props)
+        this.props.searchProd(this.props.search)
     }
-    componentDidUpdate() {
-        console.log(this.props.match)
-    }
+    
    
     render() {
         return (
@@ -48,7 +49,7 @@ class ContainerPageResults extends React.Component {
                 <ContainerResults>
                     {
                         this.props.data != null ? <>
-                        <ResultsAndFilters />
+                        <ResultsAndFilters producto = {this.props.prod} numProductos = {this.props.data.TotalRegistros} />
                         <ProductList ResultadoProductos={this.props.data.ResultadoProductos} />
                         <FooterWeb/>
                         </>: <div><h2>No hay resultados</h2></div>
@@ -65,8 +66,11 @@ class ContainerPageResults extends React.Component {
 
 const mapStateToProps = state => ({
     loading: state.products.products.loading,
-    data: state.products.products.data
+    data: state.products.products.data,
+    prod: state.products.products.product
 });
 
-
-export default connect(mapStateToProps)(ContainerPageResults);
+const mapDispatchToProps = dispatch => ({
+    searchProd:(query) => dispatch(fetchProducts(query))
+});
+export default connect(mapStateToProps,mapDispatchToProps)(ContainerPageResults);
