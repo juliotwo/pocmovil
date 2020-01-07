@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import HeaderToolbar from './components/Header/Toolbar';
+import PageResults from './containers/ContainerPageResults';
+import './styles/index.scss';
+import store from "./redux/store/store";
+import HomePage from './containers/HomePage';
+class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <Router>
+                    <HeaderToolbar></HeaderToolbar>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+                    <Switch>
+                        <Route  path="/search/:id" render={(props) => 
+                            <PageResults id={props.match.params.id} />
+                        } />
+
+
+
+                        <Route path="/">
+                            <HomePage />
+                        </Route>
+                    </Switch>
+                </Router>
+            </Provider>
+        )
+    }
 }
 
 export default App;
