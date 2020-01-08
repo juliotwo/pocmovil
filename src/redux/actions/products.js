@@ -35,12 +35,10 @@ export function laodProductsError(payload) {
 // tipo de busqueda -> 1 2 3 o 4
 
 export function fetchProducts(query,pagina="0",liquidacion="false",tipoBusqueda="4"){
-    console.log(pagina,query,liquidacion,tipoBusqueda)
     return dispatch => {
         return new Promise((resolve, reject) => {
             ProductsService.GetProducts(pagina, query,liquidacion,tipoBusqueda)
             .then(products =>{
-                console.log("QUERY",query)
                 dispatch(loadProductsSuccess(products,query));
                 resolve(products);
             })

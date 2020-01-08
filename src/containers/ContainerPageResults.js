@@ -36,11 +36,9 @@ function ProductList(props) {
 class ContainerPageResults extends React.Component {
     constructor(props){
         super(props)
-        console.log(this.props)
         this.props.searchProd(this.props.search)
     }
-    
-   
+
     render() {
         return (
             <div className="main-content">
@@ -48,7 +46,7 @@ class ContainerPageResults extends React.Component {
                 <HeaderPage></HeaderPage>
                 <ContainerResults>
                     {
-                        this.props.data != null ? <>
+                        this.props.data ? <>
                         <ResultsAndFilters producto = {this.props.prod} numProductos = {this.props.data.TotalRegistros} />
                         <ProductList ResultadoProductos={this.props.data.ResultadoProductos} />
                         <FooterWeb/>

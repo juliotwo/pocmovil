@@ -13,12 +13,11 @@ export default function (state = initialState, action) {
         case fromProducts.LOAD_PRODUCTS:
             return { ...state, ...{ products: { ...state.products, loading: true } } };
         case fromProducts.LOAD_PRODUCTS_SUCCESS: 
-            console.log("SUCCES",action.prouctName)
             return { ...state, ...{ products: { loading: false, data: action.payload, product:action.prouctName } } };
         case fromProducts.LOAD_PRODUCTS_ERROR:
-            return { ...state, ...{ products: { ...state.products, loading: true } } };
+            return { ...state, ...{ products: { data:null, loading: false } } };
         case fromProducts.NOT_LOAD_PRODUCTS:    
-            return { ...state, ...{ products: { ...state.products, loading: false } } };
+            return { ...state, ...{ products: { data:null, loading: false } } };
         default:
             return state;
     }
