@@ -19,7 +19,7 @@ function Product(props) {
         <div className="col-xl-3 col-lg-4 col-md-4 col-xs-6">
             <div className="card card-product shadow-none">
                 <div className="card-header border-0">
-                    {productState.TipoProducto === 2 ?
+                    {productState.TipoProducto === 1 ?
                         <h6 className="font-weight-500"><a href="/#">{productState.Nombre}</a>
                         </h6> :
                         <div className="row align-items-start">
@@ -38,8 +38,8 @@ function Product(props) {
                 </div>
                 <div className="card-image">
                     <a href="/#">
-                        <img alt="imagen del producto"
-                            src={productState.ImagenUrl ?? "https://elektra.vteximg.com.br/arquivos/ids/393169-1000-1000/2004184.jpg"}
+                        <img alt="imagen del producto" onError="this.src='https://elektra.vteximg.com.br/arquivos/ids/393169-1000-1000/2004184.jpg'"
+                            src={productState.ImagenUrl}
                             className="img-center img-fluid-v" />
                     </a>
                 </div>
@@ -48,8 +48,9 @@ function Product(props) {
                         <p className="text-precio-total mb-0">{numberFormat(productState.PrecioChazz)}</p>
                         <p className="text-sku mb-0">SKU: {productState.Sku}</p>
                     </div>
-                    <div className="pb-2"><small className="text-sku text-muted"><del>{numberFormat(productState.PrecioLista)}</del></small>
-                    </div>
+                    {productState.PrecioChazz === productState.PrecioLista ?? <div className="pb-2"><small className="text-sku text-muted"><del>{numberFormat(productState.PrecioLista)}</del></small>
+                    </div>}
+
                     <div className="row">
                         <div className="col-6 text-left">
                             <div className="">

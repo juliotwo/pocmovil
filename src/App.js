@@ -1,7 +1,7 @@
 import React from 'react';
 // import './App.css';
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, HashRouter } from 'react-router-dom';
 import HeaderToolbar from './components/Header/Toolbar';
 import PageResults from './containers/ContainerPageResults';
 import './styles/index.scss';
@@ -11,6 +11,7 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
+                <HashRouter>
                 <Router>
                     <HeaderToolbar></HeaderToolbar>
 
@@ -21,11 +22,12 @@ class App extends React.Component {
 
 
 
-                        <Route path="/">
-                            <HomePage />
+                        <Route path="/" Component={HomePage}>
+                           
                         </Route>
                     </Switch>
                 </Router>
+                </HashRouter>
             </Provider>
         )
     }

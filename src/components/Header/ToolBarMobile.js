@@ -17,7 +17,7 @@ class HeaderMobile extends React.Component {
         return (
             <div className="topbar-device-mobile hidden-lg hidden-md clearfix ">
                 <div className="active-mobile">
-                    <div className="topbar-mobile-history"><i className="la la-arrow-left"></i></div>
+                    <div className="topbar-mobile-history"><a href="/"><i className="la la-arrow-left"></i></a></div>
                 </div>
                 <div className="topbar-title text-dark">Resultados de búsqueda</div>
                 <div className="top-right-mobile">
