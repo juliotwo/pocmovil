@@ -38,8 +38,10 @@ function Product(props) {
                 </div>
                 <div className="card-image">
                     <a href="/#">
-                        <img alt="imagen del producto" onError="this.src='https://elektra.vteximg.com.br/arquivos/ids/393169-1000-1000/2004184.jpg'"
-                            src={productState.ImagenUrl}
+                        <img alt="imagen del producto" 
+                            height =  {150 + "px"}
+                            onError={(e)=>{console.log("ERROR IMAGE"); e.target.onerror = null; e.target.src="https://www.tiendacanon.com.mx/wcsstore/CMEXCatalogAssetStore/EOS-M50-15-45-Kit-Black_3_xl.jpg"}}
+                            src={productState.TipoProducto === 1 ? "http://10.54.66.75/Elektrafront/imagenes/productoDetalle/"+productState.Sku+".jpg": productState.ImagenUrl}
                             className="img-center img-fluid-v" />
                     </a>
                 </div>
@@ -48,8 +50,8 @@ function Product(props) {
                         <p className="text-precio-total mb-0">{numberFormat(productState.PrecioChazz)}</p>
                         <p className="text-sku mb-0">SKU: {productState.Sku}</p>
                     </div>
-                    {productState.PrecioChazz === productState.PrecioLista ?? <div className="pb-2"><small className="text-sku text-muted"><del>{numberFormat(productState.PrecioLista)}</del></small>
-                    </div>}
+                    {productState.PrecioChazz !== productState.PrecioLista ? <div className="pb-2"><small className="text-sku text-muted"><del>{numberFormat(productState.PrecioLista)}</del></small>
+                    </div>:<></>}
 
                     <div className="row">
                         <div className="col-6 text-left">

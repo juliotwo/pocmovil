@@ -36,6 +36,7 @@ function ProductList(props) {
 class ContainerPageResults extends React.Component {
     constructor(props){
         super(props)
+        console.log("PROPS RRR",this.props)
         this.props.searchProd(this.props.search)
     }
 

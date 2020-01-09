@@ -1,26 +1,35 @@
 import React from 'react';
 import './Toolbar.scss';
 import { connect } from 'react-redux';
-import { exitSearch,fetchProducts } from "../../redux/actions/products";
+import { exitSearch, fetchProducts } from "../../redux/actions/products";
+import { withRouter } from "react-router-dom";
 
 class SearchToolbar extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      search : ""
+      search: ""
     }
-    
-    // this.ExitSearch = this.ExitSearch.bind(this);
+    console.log("ROUTES",this.props)
   }
+ 
+  _KeyPressed(event) {
+    if (event.key === "Enter") {
+      console.log("ENTER")
+      this.props.history.push('/search/'+this.state.search)
+      this.props.exitSearch()
+      this.props.search(this.state.search)
 
-  async _Search(event){
-  
-    await this.props.search(this.state.search)
-   
+    }
   }
-  _OnChangeValue(event){
-    this.setState({search: event.target.value});
+  async _Search(event) {
+
+    await this.props.search(this.state.search)
+
+  }
+  _OnChangeValue(event) {
+    this.setState({ search: event.target.value });
   }
   _ExitSearch(event) {
     event.preventDefault();
@@ -28,7 +37,7 @@ class SearchToolbar extends React.Component {
       this.props.exitSearch()
     }
   }
-  
+
   render() {
     return (
       <>
@@ -40,9 +49,9 @@ class SearchToolbar extends React.Component {
           <div className="container">
             <div className="omnisearch-form">
               <div className="input-group input-group-md input-group-merge">
-                <input onChange={event => this._OnChangeValue(event)}  type="text" id="validationDefault01" className="form-control input-mask" placeholder="Ingresa los datos del producto o categoría" required="" autoComplete="off" />
+                <input onKeyPress={event => this._KeyPressed(event)} onChange={event => this._OnChangeValue(event)} type="text" id="validationDefault01" className="form-control input-mask" placeholder="Ingresa los datos del producto o categoría" required="" autoComplete="off" />
                 <div className="input-group-append">
-                  <button type="submit" className="btn btn-block btn-neutral icon-sm border-left-0" onClick={(event) => { this._Search(event) }}><i className="icon-buscar"></i></button>
+                  <a href={`/search/${this.state.search}`} className="btn btn-block btn-neutral border-left-0"> <i className="icon-buscar"></i></a>
                 </div>
               </div>
             </div>
@@ -56,13 +65,13 @@ class SearchToolbar extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   exitSearch: () => dispatch(exitSearch()),
-  search:(query) => dispatch(fetchProducts(query))
+  search: (query) => dispatch(fetchProducts(query))
 });
 const mapStateToProps = state => ({
   loading: state.products.products.loading,
-  state:state
+  state: state
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchToolbar);
+withRouter(SearchToolbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter (SearchToolbar));
 

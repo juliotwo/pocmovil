@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { initialSearch } from "../../redux/actions/products";
 import HeaderMobile from './ToolBarMobile'
 import FooterMobile from '../Footer/FooterMobile';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -13,6 +14,7 @@ import FooterMobile from '../Footer/FooterMobile';
 class HeaderToolbar extends React.Component {
     constructor(props) {
         super(props)
+        console.log("tool",this.props)
         this.Search = this.Search.bind(this);
     }
     Search() {
@@ -34,7 +36,9 @@ class HeaderToolbar extends React.Component {
                             <div className="row align-items-center">
                                 <div className="header-logo col-lg-6 col-md-6">
                                     <div className="logo">
+                                        <a href="/">
                                         <img alt="Logo" src={logo} width="120px" />
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="header-right col-lg-6">

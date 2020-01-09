@@ -1,5 +1,6 @@
 import React from 'react'
 import omnipos from '../../assets/images/omnipos.svg'
+import { withRouter } from 'react-router-dom';
 
 class HomeSearch extends React.Component {
 
@@ -12,6 +13,12 @@ class HomeSearch extends React.Component {
     _OnChangeValue(event){
         this.setState({search: event.target.value});
     }
+    _KeyPressed(event) {
+        if (event.key === "Enter") {
+          console.log("ENTER")
+          this.props.history.push('/search/'+this.state.search)
+        }
+      }
 
     render() {
         return (
@@ -48,9 +55,9 @@ class HomeSearch extends React.Component {
                                             <div className="col-lg-12 col-md-12">
                                                 <div className="form-group">
                                                     <div className="input-group input-group-lg input-group-merge">
-                                                        <input onChange={event => this._OnChangeValue(event)} type="text" id="validationDefault01" className="form-control input-mask" placeholder="Ingresa los datos del producto" required="" autoComplete="off" />
+                                                        <input onKeyPress={event => this._KeyPressed(event)} onChange={event => this._OnChangeValue(event)} type="text" id="validationDefault01" className="form-control input-mask" placeholder="Ingresa los datos del producto" required="" autoComplete="off" />
                                                         <div className="input-group-append">
-                                                            <a href={`search/${this.state.search}`} className="btn btn-block btn-neutral border-left-0"> <i className="icon-buscar"></i></a>
+                                                            <a href={`/search/${this.state.search}`} className="btn btn-block btn-neutral border-left-0"> <i className="icon-buscar"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -69,4 +76,4 @@ class HomeSearch extends React.Component {
     }
 }
 
-export default HomeSearch
+export default withRouter (HomeSearch)
