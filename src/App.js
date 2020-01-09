@@ -22,8 +22,8 @@ class App extends React.Component {
 
 
 
-                        <Route path="/" Component={HomePage}>
-                           
+                        <Route path="/">
+                            <HomePage />
                         </Route>
                     </Switch>
                 </Router>
