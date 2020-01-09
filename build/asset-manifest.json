@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.5c992196.chunk.css",
-    "main.js": "/static/js/main.789490a2.chunk.js",
+    "main.css": "/static/css/main.94a52513.chunk.css",
+    "main.js": "/static/js/main.8853f0f7.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.7dba0ef5.js",
-    "static/js/2.0bd0c1df.chunk.js": "/static/js/2.0bd0c1df.chunk.js",
+    "static/js/2.c88aa952.chunk.js": "/static/js/2.c88aa952.chunk.js",
     "index.html": "/index.html",
-    "precache-manifest.d17da6b59d05297bba4b9c523abfa2ec.js": "/precache-manifest.d17da6b59d05297bba4b9c523abfa2ec.js",
+    "precache-manifest.3c50efe5df538ebd635ef25d702679fb.js": "/precache-manifest.3c50efe5df538ebd635ef25d702679fb.js",
     "service-worker.js": "/service-worker.js",
-    "static/js/2.0bd0c1df.chunk.js.LICENSE": "/static/js/2.0bd0c1df.chunk.js.LICENSE",
+    "static/js/2.c88aa952.chunk.js.LICENSE": "/static/js/2.c88aa952.chunk.js.LICENSE",
     "static/media/catext.svg": "/static/media/catext.f608b49d.svg",
     "static/media/credito.svg": "/static/media/credito.6713b53a.svg",
     "static/media/elektra_logo.svg": "/static/media/elektra_logo.f4fe3786.svg",
@@ -16,8 +16,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.7dba0ef5.js",
-    "static/js/2.0bd0c1df.chunk.js",
-    "static/css/main.5c992196.chunk.css",
-    "static/js/main.789490a2.chunk.js"
+    "static/js/2.c88aa952.chunk.js",
+    "static/css/main.94a52513.chunk.css",
+    "static/js/main.8853f0f7.chunk.js"
   ]
 }
